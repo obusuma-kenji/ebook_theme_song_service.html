@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電子書籍テーマソング制作サービス</title>
+    <style>
+        /* 基本設定 */
+        :root {
+            --primary-color: #1a2a44; /* 信頼感のあるネイビー */
+            --accent-color: #c5a059;  /* 上品なゴールド */
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+
+        /* レイアウト用コンテナ */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヒーローエリア（トップ） */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #2d4b7a);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 60px 0;
+            background-color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        section:nth-child(even) {
+            background-color: #f4f7fa;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+        }
+
+        /* コンセプトセクション */
+        .concept-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-weight: bold;
+        }
+
+        .benefit-list li::before {
+            content: "♪";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .benefit-list span {
+            font-weight: normal;
+            display: block;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* サービスの流れ */
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* フォームスタイル */
+        .form-wrapper {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .label-desc {
+            font-size: 0.85em;
+            color: #777;
+            font-weight: normal;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box; /* パディングを含める */
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            font-weight: normal;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        /* 送信ボタン */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            background-color: #b08d48;
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .form-wrapper { padding: 20px; }
+            .flow-steps { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <span class="subtitle">読者の心に響くメロディで、物語をもっと遠くへ</span>
+            <h1>あなたの書籍に、<br>世界に一つだけの「テーマソング」を。</h1>
+            <p>文字だけでは伝えきれない想いを、音楽に乗せて届けませんか？<br>SNS販促や出版記念講演会で圧倒的な差をつける、完全オリジナルのテーマソングを制作します。</p>
+        </div>
+    </header>
+
+    <section id="concept">
+        <div class="container">
+            <h2>なぜ、電子書籍に「音楽」が必要なのか？</h2>
+            <div class="concept-box">
+                <p>数多くの電子書籍が出版される今、読者の目に留まるためには「印象」に残ることが重要です。視覚（文字）だけでなく、聴覚（音楽）からのアプローチは、記憶の定着率を飛躍的に高めます。</p>
+                <ul class="benefit-list">
+                    <li>SNSでの拡散力アップ
+                        <span>InstagramのリールやTikTok動画にオリジナル楽曲を使用することで、クリック率と視聴維持率が向上します。</span>
+                    </li>
+                    <li>世界観の共有
+                        <span>読者がページを開く前に、本の雰囲気やメッセージを直感的に伝えられます。</span>
+                    </li>
+                    <li>著者ブランディング
+                        <span>あなただけの「音」を持つことで、著者としてのブランド価値が高まります。</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="flow">
+        <div class="container">
+            <h2>制作の流れ</h2>
+            <div class="flow-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>お申し込み</h3>
+                    <p>以下のフォームより、書籍への想いやイメージをお聞かせください。</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>制作</h3>
+                    <p>AI技術とプロンプトエンジニアリングを駆使して作詞・作曲を行います。</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>確認・修正</h3>
+                    <p>デモ音源をご確認いただき、必要に応じて微調整を行います。</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h3>納品</h3>
+                    <p>完成した楽曲データ（MP3など）をお届けします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>制作お申し込み・ヒヤリング</h2>
+            <p style="text-align: center; margin-bottom: 30px;">あなたの書籍の世界観を最高の音楽にするために、以下の項目にお答えください。</p>
+            
+            <div class="form-wrapper">
+                <form action="#" method="POST">
+                    
+                    <h3>1. 書籍について教えてください</h3>
+                    <div class="form-group">
+                        <label for="book-title">書籍タイトル <span style="color:red">*</span></label>
+                        <input type="text" id="book-title" name="book-title" required placeholder="例：人生から「さあ、どうする？」と問われた日">
+                    </div>
+                    <div class="form-group">
+                        <label for="author-name">著者名（ペンネーム） <span style="color:red">*</span></label>
+                        <input type="text" id="author-name" name="author-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-genre">書籍のジャンル</label>
+                        <select id="book-genre" name="book-genre">
+                            <option value="">選択してください</option>
+                            <option value="business">ビジネス・実用</option>
+                            <option value="self-help">自己啓発・マインド</option>
+                            <option value="essay">エッセイ・自叙伝</option>
+                            <option value="novel">小説・物語</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="target">主なターゲット読者層</label>
+                        <input type="text" id="target" name="target" placeholder="例：子育てが一段落した50代女性、現状を変えたい会社員など">
+                    </div>
+                    <div class="form-group">
+                        <label for="file-upload">参考資料（目次・はじめに 等）</label>
+                        <span class="label-desc">※画像のアップロード機能は実際の運用環境に合わせて設定してください。</span>
+                        <input type="file" id="file-upload" name="file-upload">
+                    </div>
+
+                    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+                    <h3>2. 楽曲のイメージ（サウンド）</h3>
+                    <div class="form-group">
+                        <label>希望する雰囲気（複数選択可）</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="mood" value="pop"> 明るい・希望に満ちた（ポップス）</label>
+                            <label><input type="checkbox" name="mood" value="ballad"> 感動的・泣ける（バラード）</label>
+                            <label><input type="checkbox" name="mood" value="healing"> 癒やし・温かい（ヒーリング・フォーク）</label>
+                            <label><input type="checkbox" name="mood" value="rock"> 力強い・背中を押す（ロック・アップテンポ）</label>
+                            <label><input type="checkbox" name="mood" value="citypop"> 洗練された・都会的（シティポップ・ジャズ）</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reference">具体的なイメージ・参考曲</label>
+                        <input type="text" id="reference" name="reference" placeholder="例：80年代のユーミンのようなノスタルジックな感じ">
+                    </div>
+                    <div class="form-group">
+                        <label>テンポの希望</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="tempo" value="slow"> ゆったり（しっとり聴かせる）</label>
+                            <label><input type="radio" name="tempo" value="medium"> ミディアム（歩く速さくらい・心地よい）</label>
+                            <label><input type="radio" name="tempo" value="fast"> アップテンポ（疾走感がある・盛り上がる）</label>
+                        </div>
+                    </div>
+
+                    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+                    <h3>3. 歌詞へのこだわり</h3>
+                    <div class="form-group">
+                        <label for="core-message">最も伝えたい「コア・メッセージ」</label>
+                        <span class="label-desc">読者に一番伝えたいこと、感じてほしいことを一言で。</span>
+                        <input type="text" id="core-message" name="core-message" placeholder="例：悲しみは乗り越えられる、あなたは一人じゃない">
+                    </div>
+                    <div class="form-group">
+                        <label for="keywords">歌詞に入れてほしいキーワード（3〜5個）</label>
+                        <input type="text" id="keywords" name="keywords" placeholder="例：光、扉、つむぐ、物語">
+                    </div>
+                    <div class="form-group">
+                        <label for="ng-words">NGワード・避けた表現</label>
+                        <span class="label-desc">本には出てくるが歌詞にはしたくない言葉など。</span>
+                        <input type="text" id="ng-words" name="ng-words" placeholder="例：「うつ」「死」などの直接的すぎる言葉">
+                    </div>
+                    <div class="form-group">
+                        <label for="scenery">情景や色のイメージ</label>
+                        <input type="text" id="scenery" name="scenery" placeholder="例：冬から春へ変わる景色、雨上がりの空、セピア色">
+                    </div>
+
+                    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+                    <h3>4. 活用シーン</h3>
+                    <div class="form-group">
+                        <label>主な使用用途</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="usage" value="sns"> SNSショート動画（Instagram/TikTok）</label>
+                            <label><input type="checkbox" name="usage" value="youtube"> YouTube動画（OP/ED/PV）</label>
+                            <label><input type="checkbox" name="usage" value="seminar"> 講演会・セミナーBGM</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 30px;">
+                        <button type="submit" class="submit-btn">この内容で申し込む</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Electronic Book Theme Song Production Service. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

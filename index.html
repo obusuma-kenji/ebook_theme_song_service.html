@@ -152,80 +152,35 @@
             margin-bottom: 10px;
         }
 
-        /* フォームスタイル */
-        .form-wrapper {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        /* CTA（お申込みボタン）エリア */
+        .cta-area {
+            text-align: center;
+            padding: 60px 40px;
         }
 
-        .form-group {
-            margin-bottom: 25px;
+        .cta-area p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
         }
 
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: var(--primary-color);
-        }
-
-        .label-desc {
-            font-size: 0.85em;
-            color: #777;
-            font-weight: normal;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box; /* パディングを含める */
-        }
-
-        textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .checkbox-group, .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .checkbox-group label, .radio-group label {
-            font-weight: normal;
-            cursor: pointer;
-            margin-bottom: 0;
-        }
-
-        /* 送信ボタン */
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
             background-color: var(--accent-color);
             color: var(--white);
             font-size: 1.2rem;
             font-weight: bold;
-            border: none;
+            text-decoration: none;
             border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
         }
 
-        .submit-btn:hover {
+        .cta-button:hover {
             background-color: #b08d48;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
         }
 
         /* フッター */
@@ -240,7 +195,11 @@
         /* スマホ対応 */
         @media (max-width: 600px) {
             .hero h1 { font-size: 1.8rem; }
-            .form-wrapper { padding: 20px; }
+            .cta-area { padding: 40px 20px; }
+            .cta-button { 
+                padding: 18px 40px; 
+                font-size: 1.1rem;
+            }
             .flow-steps { flex-direction: column; }
         }
     </style>
@@ -265,7 +224,7 @@
                         <span>InstagramのリールやTikTok動画にオリジナル楽曲を使用することで、クリック率と視聴維持率が向上します。</span>
                     </li>
                     <li>世界観の共有
-                        <span>読者がページを開く前に、本の雰囲気やメッセージを直感的に伝えられます。</span>
+                        <span>読者がページ開く前に、本の雰囲気やメッセージを直感的に伝えられます。</span>
                     </li>
                     <li>著者ブランディング
                         <span>あなただけの「音」を持つことで、著者としてのブランド価値が高まります。</span>
@@ -306,105 +265,17 @@
     <section id="contact">
         <div class="container">
             <h2>制作お申し込み・ヒヤリング</h2>
-            <p style="text-align: center; margin-bottom: 30px;">あなたの書籍の世界観を最高の音楽にするために、以下の項目にお答えください。</p>
             
-            <div class="form-wrapper">
-                <form action="#" method="POST">
-                    
-                    <h3>1. 書籍について教えてください</h3>
-                    <div class="form-group">
-                        <label for="book-title">書籍タイトル <span style="color:red">*</span></label>
-                        <input type="text" id="book-title" name="book-title" required placeholder="例：人生から「さあ、どうする？」と問われた日">
-                    </div>
-                    <div class="form-group">
-                        <label for="author-name">著者名（ペンネーム） <span style="color:red">*</span></label>
-                        <input type="text" id="author-name" name="author-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="book-genre">書籍のジャンル</label>
-                        <select id="book-genre" name="book-genre">
-                            <option value="">選択してください</option>
-                            <option value="business">ビジネス・実用</option>
-                            <option value="self-help">自己啓発・マインド</option>
-                            <option value="essay">エッセイ・自叙伝</option>
-                            <option value="novel">小説・物語</option>
-                            <option value="other">その他</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="target">主なターゲット読者層</label>
-                        <input type="text" id="target" name="target" placeholder="例：子育てが一段落した50代女性、現状を変えたい会社員など">
-                    </div>
-                    <div class="form-group">
-                        <label for="file-upload">参考資料（目次・はじめに 等）</label>
-                        <span class="label-desc">※画像のアップロード機能は実際の運用環境に合わせて設定してください。</span>
-                        <input type="file" id="file-upload" name="file-upload">
-                    </div>
-
-                    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-
-                    <h3>2. 楽曲のイメージ（サウンド）</h3>
-                    <div class="form-group">
-                        <label>希望する雰囲気（複数選択可）</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="mood" value="pop"> 明るい・希望に満ちた（ポップス）</label>
-                            <label><input type="checkbox" name="mood" value="ballad"> 感動的・泣ける（バラード）</label>
-                            <label><input type="checkbox" name="mood" value="healing"> 癒やし・温かい（ヒーリング・フォーク）</label>
-                            <label><input type="checkbox" name="mood" value="rock"> 力強い・背中を押す（ロック・アップテンポ）</label>
-                            <label><input type="checkbox" name="mood" value="citypop"> 洗練された・都会的（シティポップ・ジャズ）</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="reference">具体的なイメージ・参考曲</label>
-                        <input type="text" id="reference" name="reference" placeholder="例：80年代のユーミンのようなノスタルジックな感じ">
-                    </div>
-                    <div class="form-group">
-                        <label>テンポの希望</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="tempo" value="slow"> ゆったり（しっとり聴かせる）</label>
-                            <label><input type="radio" name="tempo" value="medium"> ミディアム（歩く速さくらい・心地よい）</label>
-                            <label><input type="radio" name="tempo" value="fast"> アップテンポ（疾走感がある・盛り上がる）</label>
-                        </div>
-                    </div>
-
-                    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-
-                    <h3>3. 歌詞へのこだわり</h3>
-                    <div class="form-group">
-                        <label for="core-message">最も伝えたい「コア・メッセージ」</label>
-                        <span class="label-desc">読者に一番伝えたいこと、感じてほしいことを一言で。</span>
-                        <input type="text" id="core-message" name="core-message" placeholder="例：悲しみは乗り越えられる、あなたは一人じゃない">
-                    </div>
-                    <div class="form-group">
-                        <label for="keywords">歌詞に入れてほしいキーワード（3〜5個）</label>
-                        <input type="text" id="keywords" name="keywords" placeholder="例：光、扉、つむぐ、物語">
-                    </div>
-                    <div class="form-group">
-                        <label for="ng-words">NGワード・避けた表現</label>
-                        <span class="label-desc">本には出てくるが歌詞にはしたくない言葉など。</span>
-                        <input type="text" id="ng-words" name="ng-words" placeholder="例：「うつ」「死」などの直接的すぎる言葉">
-                    </div>
-                    <div class="form-group">
-                        <label for="scenery">情景や色のイメージ</label>
-                        <input type="text" id="scenery" name="scenery" placeholder="例：冬から春へ変わる景色、雨上がりの空、セピア色">
-                    </div>
-
-                    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-
-                    <h3>4. 活用シーン</h3>
-                    <div class="form-group">
-                        <label>主な使用用途</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="usage" value="sns"> SNSショート動画（Instagram/TikTok）</label>
-                            <label><input type="checkbox" name="usage" value="youtube"> YouTube動画（OP/ED/PV）</label>
-                            <label><input type="checkbox" name="usage" value="seminar"> 講演会・セミナーBGM</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style="margin-top: 30px;">
-                        <button type="submit" class="submit-btn">この内容で申し込む</button>
-                    </div>
-                </form>
+            <div class="cta-area">
+                <p>あなたの書籍の世界観を最高の音楽にするために、<br>お申込みフォームにて詳しくお聞かせください。</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4pHzUsWGuEi-5msaha0DwKh9Q6n1MLyoqMBzGiaPpHAegcQ/viewform" 
+                   target="_blank" 
+                   class="cta-button">
+                    お申込みフォームへ進む →
+                </a>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #777;">
+                    ※ 新しいタブでGoogleフォームが開きます
+                </p>
             </div>
         </div>
     </section>
